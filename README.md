@@ -24,6 +24,8 @@ Double-click the run_simulator file. It will ask you press Tab until you see the
 
 Creating a new Program or Modifying an Old One
 --------------------
+All arduino programs are stored in the arduino folder.
+
 You can edit the arduino programs in any text editor. Either download [Arduino](http://arduino.cc/en/main/software) or use something like Wordpad or Notepad++.
 
 To create a new program, open the *arduino* folder and double click the **Create New Program** file. It will ask you to name your program. The new program will be placed in a folder with the same name.
