@@ -8,7 +8,7 @@ Installation - Windows
 
 Make sure you have the [Java jdk](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed.
 
-Open the run_simulator.bat file in notepad. The second line of text should say: 
+Open the run_simulator.bat file in notepad by right clicking on it and pressing "Edit". The second line of text should say: 
 
 ```set PATH="```**YourPathNameHere**```";%PATH%```
 
