@@ -258,23 +258,7 @@ public class Arduino_Simulator extends PApplet {
 				// get_next_wall(0) - this.w * 0.5);
 				// y = min(max(y, get_next_wall(1) + this.h * 0.5),
 				// get_next_wall(3) - this.h * 0.5);
-				intersecting = false;
-				for (VirtualWall vw : virtual_walls) {
-					boolean intersectingX = max(x - this.w * 0.5f,
-							min(vw.start.x, vw.end.x)) < this.x + this.w * 0.5f
-							&& min(x + this.w * 0.5f, max(vw.start.x, vw.end.x)) > this.x
-									- this.w * 0.5f;
-					boolean intersectingY = max(y - this.h * 0.5f,
-							min(vw.start.y, vw.end.y)) < this.y + this.h * 0.5f
-							&& min(y + this.h * 0.5f, max(vw.start.y, vw.end.y)) > this.y
-									- this.h * 0.5f;
-					intersecting = intersecting
-							|| (intersectingX && intersectingY);
-					if (!intersecting) {
-						intersecting = x > width - w * 0.5f || x < w * 0.5f
-								|| y < h * 0.5f || y > height - h * 0.5f;
-					}
-				}
+				checkIntersecting();
 			}
 			pushMatrix();
 			translate(x, y);
@@ -310,18 +294,40 @@ public class Arduino_Simulator extends PApplet {
 		}
 
 		public void changeX(float dist) {
-			if (!intersecting) {
-				px = x;
-				x += dist;
+			px = x;
+			x += dist;
+            if (checkIntersecting()) {
+				x = px;
 			}
 		}
 
 		public void changeY(float dist) {
-			if (!intersecting) {
-				py = y;
-				y -= dist;
+            py = y;
+			y -= dist;
+			if (checkIntersecting()) {
+				y = py;
 			}
 		}
+        
+        boolean checkIntersecting(){
+            intersecting = false;
+            for (VirtualWall vw : virtual_walls) {
+                boolean intersectingX = max(x - this.w * 0.5f,
+                        min(vw.start.x, vw.end.x)) < this.x + this.w * 0.5f
+                        && min(x + this.w * 0.5f, max(vw.start.x, vw.end.x)) > this.x
+                                - this.w * 0.5f;
+                boolean intersectingY = max(y - this.h * 0.5f,
+                        min(vw.start.y, vw.end.y)) < this.y + this.h * 0.5f
+                        && min(y + this.h * 0.5f, max(vw.start.y, vw.end.y)) > this.y
+                                - this.h * 0.5f;
+                intersecting = intersecting || (intersectingX && intersectingY);
+                if (!intersecting) {
+                    intersecting = x > width - w * 0.5f || x < w * 0.5f
+                            || y < h * 0.5f || y > height - h * 0.5f;
+                }   
+            }
+            return intersecting;
+        }
 
 		public float get_next_wall(int dir) {
 			float distance;

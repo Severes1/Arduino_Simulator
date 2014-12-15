@@ -1,5 +1,6 @@
 @echo off
-set PATH=%PATH%;"bin\jdk1.7.0_71\bin"
+
+set PATH="C:\Program Files (x86)\Java\jdk1.8.0_25\bin";%PATH%
 
 cd arduino
 
