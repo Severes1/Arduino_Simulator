@@ -3,8 +3,8 @@
 int ledPin = 13;
 
 // Motor Pins:
-int motorPin1 = 3;
-int motorPin2 = 11;
+int motorPin1 = 6;
+int motorPin2 = 5;
 
 // Ultrasonic Range Finder Pins:
 int us_input_pins[] = {
