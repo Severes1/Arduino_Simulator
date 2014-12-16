@@ -12,7 +12,7 @@ Open the run_simulator.bat file in notepad by right clicking on it and pressing 
 
 ```set PATH="```**YourPathNameHere**```";%PATH%```
 
-Replace the text in the quotes with the location of the *bin* file where you installed the Java jdk. For example:
+Replace the text in the quotes with the location of the *bin* folder where you installed the Java jdk. For example:
 
 ```set PATH="C:\Program Files\Java\jdk1.8.0_25\bin";%PATH%```
 
